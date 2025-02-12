@@ -36,7 +36,7 @@ async def button(bot, update):
             reply_markup=Translation.TECH_VJ_HELP_BUTTONS,
             # disable_web_page_preview=True
         )
-              elif update.data == "OpenSettings":
+    elif update.data == "OpenSettings":
         await update.answer()
         await OpenSettings(update.message)
     elif update.data == "showThumbnail":
