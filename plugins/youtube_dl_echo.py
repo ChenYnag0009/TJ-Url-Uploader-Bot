@@ -111,7 +111,7 @@ async def echo(bot, update):
         if "This video is only available for registered users." in error_message:
             error_message = Translation.TECH_VJ_SET_CUSTOM_USERNAME_PASSWORD
         else:
-            error_message = "sᴀɪᴅ ɪɴᴠᴀʟɪᴅ ᴜʀʟ 🚸</code>"
+            error_message = "ɪɴᴠᴀʟɪᴅ ᴜʀʟ 🚸</code>"
         await bot.send_message(chat_id=update.chat.id,
         text=Translation.TECH_VJ_NO_VOID_FORMAT_FOUND.format(str(error_message)),
         disable_web_page_preview=True, parse_mode=enums.ParseMode.HTML,
