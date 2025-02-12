@@ -103,7 +103,7 @@ class Translation(object):
     TECH_VJ_SAVED_CUSTOM_THUMB_NAIL = "<b>ᴄᴜꜱᴛᴏᴍ ᴠɪᴅᴇᴏ / ғɪʟᴇ ᴛʜᴜᴍʙɴᴀɪʟ ꜱᴀᴠᴇᴅ. Tʜɪꜱ ɪᴍᴀɢᴇ ᴡɪʟʟ ʙᴇ ᴜꜱᴇᴅ ɪɴ ᴛʜᴇ ᴠɪᴅᴇᴏ / ғɪʟᴇ.</b>"
     TECH_VJ_DEL_ETED_CUSTOM_THUMB_NAIL = "<b>✅ ᴄᴜꜱᴛᴏᴍ ᴛʜᴜᴍʙɴᴀɪʟ ᴄʟᴇᴀʀᴇᴅ ꜱᴜᴄᴄᴇꜱғᴜʟʟʏ.</b>"
     TECH_VJ_CUSTOM_CAPTION_UL_FILE = "<b>{}</b>"
-    TECH_VJ_NO_VOID_FORMAT_FOUND = "<b>ᴇʀʀᴏʀ...\nTᴇᴄʜ VJ ꜱᴀɪᴅ: {}</b>"
+    TECH_VJ_NO_VOID_FORMAT_FOUND = "<b>ᴇʀʀᴏʀ...\nꜱᴀɪᴅ: {}</b>"
     TECH_VJ_REPLY_TO_MEDIA_ALBUM_TO_GEN_THUMB = "<b>ʀᴇᴘʟʏ /generatecustomthumbnail ᴛᴏ ᴀ ᴍᴇᴅɪᴀ ᴀʟʙᴜᴍ, ᴛᴏ ɢᴇɴᴇʀᴀᴛᴇ ᴄᴜꜱᴛᴏᴍ ᴛʜᴜᴍʙᴀɪʟ</b>"
     TECH_VJ_ERR_ONLY_TWO_MEDIA_IN_ALBUM = """<b>ᴍᴇᴅɪᴀ ᴀʟʙᴜᴍ ꜱʜᴏᴜʟᴅ ᴄᴏɴᴛᴀɪɴ ᴏɴʟʏ ᴛᴡᴏ ᴘʜᴏᴛᴏꜱ. ᴘʟᴇᴀꜱᴇ ʀᴇ-ꜱᴇɴᴅ ᴛʜᴇ ᴍᴇᴅɪᴀ ᴀʟʙᴜᴍ, ᴀɴᴅ ᴛʜᴇɴ ᴛʀʏ ᴀɢᴀɪɴ, ᴏʀ ꜱᴇɴᴅ ᴏɴʟʏ ᴛᴡᴏ ᴘʜᴏᴛᴏꜱ ɪɴ ᴀɴ ᴀʟʙᴜᴍ.\nʏᴏᴜ ᴄᴀɴ ᴜꜱᴇ /ʀᴇɴᴀᴍᴇ ᴄᴏᴍᴍᴀɴᴅ ᴀғᴛᴇʀ ʀᴇᴄᴇɪᴠɪɴɢ ғɪʟᴇ ᴛᴏ ʀᴇɴᴀᴍᴇ ɪᴛ ᴡɪᴛʜ ᴄᴜꜱᴛᴏᴍ ᴛʜᴜᴍʙɴᴀɪʟ ꜱᴜᴘᴘᴏʀᴛ.</b>"""
     TECH_VJ_CANCEL_STR = "<b>ᴘʀᴏᴄᴇꜱꜱ ᴄᴀɴᴄᴇʟʟᴇᴅ</b>"
