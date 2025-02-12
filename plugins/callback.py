@@ -36,21 +36,7 @@ async def button(bot, update):
             reply_markup=Translation.TECH_VJ_HELP_BUTTONS,
             # disable_web_page_preview=True
         )
-    elif update.data == "OpenSettings":
-        await update.answer()
-        await OpenSettings(update.message)
-    elif update.data == "showThumbnail":
-        thumbnail = await db.get_thumbnail(update.from_user.id)
-        if not thumbnail:
-            await update.answer("You didn't set any custom thumbnail!", show_alert=True)
-        else:
-            await update.answer()
-            await bot.send_photo(update.message.chat.id, thumbnail, "Custom Thumbnail",
-                               reply_markup=types.InlineKeyboardMarkup([[
-                                   types.InlineKeyboardButton("Delete Thumbnail",
-                                                              callback_data="deleteThumbnail")
-                               ]]))
-                  
+  
     elif update.data == "about":
         await update.message.edit(
             text=Translation.TECH_VJ_ABOUT_TEXT,
