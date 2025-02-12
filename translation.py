@@ -61,6 +61,7 @@ class Translation(object):
             InlineKeyboardButton('🦊 ᴀʙᴏᴜᴛ', callback_data='about')
         ], [
             InlineKeyboardButton('🇰🇭 𝙲𝚑𝚊𝚗𝚗𝚎𝚕 𝚆𝚑𝚊𝚝𝚌𝚑 𝙳𝚘𝚗𝚐𝙷𝚞𝚊 [𝚂𝙴𝙰𝚃𝚅24] 💖', url='https://t.me/seatv24')
+            InlineKeyboardButton('Settings', callback_data='OpenSettings')
         ]]
     )
     TECH_VJ_HELP_BUTTONS = InlineKeyboardMarkup(
