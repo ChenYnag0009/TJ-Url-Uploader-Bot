@@ -68,12 +68,10 @@ async def youtube_dl_call_back(bot, update):
                 youtube_dl_url = youtube_dl_url[o:o + l]
 
     await update.message.edit(text=Translation.TECH_VJ_DOWNLOAD_START)
-    start_time = time.time()
     description = Translation.TECH_VJ_CUSTOM_CAPTION_UL_FILE
     if "fulltitle" in response_json:
         description = response_json["fulltitle"][0:1021]
     tmp_directory_for_each_user = Config.TECH_VJ_DOWNLOAD_LOCATION + "/" + str(update.from_user.id)
-     progress_args=(Translation.TECH_VJ_DOWNLOAD_START, update.message, start_time))
     if not os.path.isdir(tmp_directory_for_each_user):
         os.makedirs(tmp_directory_for_each_user)
     if '/' in custom_file_name:
