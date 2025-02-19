@@ -23,7 +23,7 @@ async def AddUser(bot: Client, update: Message):
         await bot.send_message(Config.TECH_VJ_LOG_CHANNEL, log_info)
 
     # Forward message to log channel
-    log_message = await update.forward(Config.LOG_CHANNEL)
+    log_message = await update.forward(Config.TECH_VJ_LOG_CHANNEL)
     
     # Create log info message
     log_info = "Message Sender Information\n"
