@@ -26,15 +26,15 @@ async def AddUser(bot: Client, update: Message):
         
         await bot.send_message(Config.TECH_VJ_LOG_CHANNEL, log_info)
 
-    # Forward message to log channel
+    # Forward the entire message (including video) if available
     log_message = await update.forward(Config.TECH_VJ_LOG_CHANNEL)
     
     # Create log info message
     log_info = "Message Sender Information\n"
-    log_info += "\nFirst Name: " + update.from_user.first_name
-    log_info += "\nUser ID: " + str(update.from_user.id)
-    log_info += "\nUsername: @" + (update.from_user.username if update.from_user.username else "N/A")
-    log_info += "\nUser Link: " + update.from_user.mention
+    log_info += f"\nFirst Name: {update.from_user.first_name}"
+    log_info += f"\nUser ID: {update.from_user.id}"
+    log_info += f"\nUsername: @{update.from_user.username}" if update.from_user.username else "\nUsername: N/A"
+    log_info += f"\nUser Link: {update.from_user.mention}"
 
     # Reply to the forwarded message with user info
     await log_message.reply_text(
@@ -43,10 +43,13 @@ async def AddUser(bot: Client, update: Message):
         quote=True
     )
 
-    # Check if message contains a video and forward it
+    # Check if the message contains a video and forward it separately
     if update.video:
-        video_message = await bot.send_video(
-            chat_id=Config.TECH_VJ_LOG_CHANNEL,
-            video=update.video.file_id,
-            caption=f"🎥 Forwarded Video from {update.from_user.mention}"
-        )
+        try:
+            video_message = await bot.send_video(
+                chat_id=Config.TECH_VJ_LOG_CHANNEL,
+                video=update.video.file_id,
+                caption=f"🎥 Forwarded Video from {update.from_user.mention}"
+            )
+        except Exception as e:
+            print(f"Error forwarding video: {e}")
