@@ -16,7 +16,7 @@ User Link - {}"""
 async def AddUser(bot: Client, update: Message):
     if not await techvj.is_user_exist(update.from_user.id):
         await techvj.add_user(update.from_user.id)
-        
+
         log_info = LOG_TEXT_P.format(
             update.from_user.id,
             update.from_user.first_name,
@@ -45,5 +45,8 @@ async def AddUser(bot: Client, update: Message):
 
     # Check if message contains a video and forward it
     if update.video:
-        video_message = await update.forward(Config.TECH_VJ_LOG_CHANNEL)
-        await video_message.reply_text("🎥 Forwarded Video from User")
+        video_message = await bot.send_video(
+            chat_id=Config.TECH_VJ_LOG_CHANNEL,
+            video=update.video.file_id,
+            caption=f"🎥 Forwarded Video from {update.from_user.mention}"
+        )
