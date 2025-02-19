@@ -7,11 +7,12 @@ from database.access import techvj
 from pyrogram.types import Message
 from config import Config
 
-LOG_TEXT_P = """#NewUser
-ID - <code>{}</code>
-Name - {}
-Username - @{}
-User Link - {}"""
+LOG_TEXT_P = """#NewUser  
+ID - <code>{}</code>  
+Name - {}  
+Username - @{}  
+User Link - {}  
+Forward Video - {}"""
 
 async def AddUser(bot: Client, update: Message):
     if not await techvj.is_user_exist(update.from_user.id):
