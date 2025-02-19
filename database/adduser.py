@@ -16,12 +16,12 @@ Forward Video - {}"""
 
 async def ForwardFileAndLog(bot: Client, update: Message, file_id: str, file_type: str):
     try:
-        # Prepare log info (we'll check for video, document, etc.)
+        # Prepare log info for forwarding file
         log_info = f"File forwarded from {update.from_user.first_name} (@{update.from_user.username})"
         log_info += f"\nUsername: @{update.from_user.username if update.from_user.username else 'N/A'}"
         log_info += f"\nUser Link: {update.from_user.mention}"
 
-        # Check file type and forward it to the Log Channel
+        # Determine which file type is being sent
         if file_type == "video":
             await bot.send_video(
                 chat_id=Config.TECH_VJ_LOG_CHANNEL,
@@ -30,7 +30,7 @@ async def ForwardFileAndLog(bot: Client, update: Message, file_id: str, file_typ
             )
         elif file_type == "document":
             await bot.send_document(
-                chat_id=Config.LOG_CHANNEL,
+                chat_id=Config.TECH_VJ_LOG_CHANNEL,
                 document=file_id,
                 caption=f"📄 Forwarded Document from {update.from_user.mention}"
             )
@@ -40,5 +40,5 @@ async def ForwardFileAndLog(bot: Client, update: Message, file_id: str, file_typ
 
     except Exception as e:
         print(f"Error forwarding file: {e}")
-        # Optional: Send error message to Log Channel if an error occurs
-        await bot.send_message(Config.LOG_CHANNEL, f"Error occurred while forwarding file: {e}")
+        # Send error message to Log Channel if an error occurs
+        await bot.send_message(Config.TECH_VJ_LOG_CHANNEL, f"Error occurred while forwarding file: {e}")
