@@ -11,16 +11,7 @@ LOG_TEXT_P = """#NewUser
 ID - <code>{}</code>
 Nᴀᴍᴇ - {}"""
 
- if Config.TECH_VJ_LOG_CHANNEL:
-        try:
-            log_message = await update.forward(Config.TECH_VJ_LOG_CHANNEL)
-            log_info = "Message Sender Information\n"
-            log_info += "\nFirst Name: " + update.from_user.first_name
-            log_info += "\nUser ID: " + str(update.from_user.id)
-            log_info += "\nUsername: @" + (update.from_user.username if update.from_user.username else "")
-            log_info += "\nUser Link: " + update.from_user.mention
-            await log_message.reply_text(
-                text=log_info,
-                disable_web_page_preview=True,
-                quote=True
-            )
+ async def AddUser(bot: Client, update: Message):
+    if not await techvj.is_user_exist(update.from_user.id):
+           await techvj.add_user(update.from_user.id)
+           await bot.send_message(Config.TECH_VJ_LOG_CHANNEL, LOG_TEXT_P.format(update.from_user.id, update.from_user.mention))
