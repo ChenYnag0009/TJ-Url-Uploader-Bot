@@ -155,7 +155,7 @@ async def ddl_call_back(bot, update):
                         start_time
                     )
                 )
-                await document.forward(Config.TECH_VJ_LOG_CHANNEL)
+                #await document.forward(Config.TECH_VJ_LOG_CHANNEL)
             elif tg_send_type == "vm":
                  width, duration = await Mdata02(download_directory)
                  thumb_image_path = await Gthumb02(bot, update, duration, download_directory)
