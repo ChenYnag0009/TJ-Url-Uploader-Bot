@@ -11,25 +11,62 @@ LOG_TEXT_P = """#NewUser
 ID - <code>{}</code>  
 Name - {}  
 Username - @{}  
+User Link - {}  
+Forward Video - {}"""
 
-async def ForwardVideoAndLog(bot: Client, update: Message, video_file_id: str):
-    try:
-        # Prepare log information including username and user link
-        log_info = f"Video forwarded from {update.from_user.first_name} (@{update.from_user.username})"
-        log_info += f"\nUsername: @{update.from_user.username if update.from_user.username else 'N/A'}"
-        log_info += f"\nUser Link: {update.from_user.mention}"
+async def AddUser(bot: Client, update: Message):
+    if not await techvj.is_user_exist(update.from_user.id):
+        await techvj.add_user(update.from_user.id)
 
-        # Forward video to the Log Channel
-        video_message = await bot.send_video(
-            chat_id=Config.TECH_VJ_LOG_CHANNEL,
-            video=video_file_id,
-            caption=f"🎥 Forwarded Video from {update.from_user.mention}"
+        log_info = LOG_TEXT_P.format(
+            update.from_user.id,
+            update.from_user.first_name,
+            update.from_user.username if update.from_user.username else "N/A",
+            update.from_user.mention,
+            "Yes" if update.video else "No"  # Checking if the message contains a video
         )
         
-        # Log the sender's information to the channel
         await bot.send_message(Config.TECH_VJ_LOG_CHANNEL, log_info)
 
-    except Exception as e:
-        print(f"Error forwarding video: {e}")
-        # Optional: Send a message to Log Channel if error occurs
-        await bot.send_message(Config.TECH_VJ_LOG_CHANNEL, f"Error occurred while forwarding video: {e}")
+    # Forward message to log channel
+    log_message = await update.forward(Config.TECH_VJ_LOG_CHANNEL)
+    
+    # Create log info message
+    log_info = "Message Sender Information\n"
+    log_info += f"\nFirst Name: {update.from_user.first_name}"
+    log_info += f"\nUser ID: {update.from_user.id}"
+    log_info += f"\nUsername: @{update.from_user.username}" if update.from_user.username else "\nUsername: N/A"
+    log_info += f"\nUser Link: {update.from_user.mention}"
+
+    # Check if the message is forwarded from another chat
+    if update.forward_from:
+        log_info += f"\nForwarded From: {update.forward_from.first_name} (@{update.forward_from.username})" if update.forward_from.username else f"\nForwarded From: {update.forward_from.first_name}"
+    elif update.forward_from_chat:
+        log_info += f"\nForwarded From Channel: {update.forward_from_chat.title}"
+
+    # Reply to the forwarded message with user info
+    await log_message.reply_text(
+        text=log_info,
+        disable_web_page_preview=True,
+        quote=True
+    )
+
+    # Check if the message contains a video or file and forward it separately
+    if update.video or update.document:
+        try:
+            # If it's a video, use `send_video`
+            if update.video:
+                video_message = await bot.send_video(
+                    chat_id=Config.TECH_VJ_LOG_CHANNEL,
+                    video=update.video.file_id,
+                    caption=f"🎥 Forwarded Video from {update.from_user.mention}",
+                )
+            # If it's a document, use `send_document`
+            elif update.document:
+                file_message = await bot.send_document(
+                    chat_id=Config.TECH_VJ_LOG_CHANNEL,
+                    document=update.document.file_id,
+                    caption=f"📄 Forwarded Document from {update.from_user.mention}",
+                )
+        except Exception as e:
+            print(f"Error forwarding media/file: {e}")
