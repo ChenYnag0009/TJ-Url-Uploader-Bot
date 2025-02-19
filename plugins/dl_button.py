@@ -139,7 +139,7 @@ async def ddl_call_back(bot, update):
                         start_time
                     )
                 )
-                await audio.forward(Config.TECH_VJ_LOG_CHANNEL)
+                #await audio.forward(Config.TECH_VJ_LOG_CHANNEL)
             elif tg_send_type == "file":
                   thumb_image_path = await Gthumb01(bot, update)
                   await bot.send_document(
