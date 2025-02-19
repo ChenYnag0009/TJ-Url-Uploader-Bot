@@ -14,6 +14,6 @@ Nᴀᴍᴇ - {}"""
  async def AddUser(bot: Client, update: Message):
     if not await techvj.is_user_exist(update.from_user.id):
            await techvj.add_user(update.from_user.id)
-           await techvj.add_user_link(update.from_user.mention)
+           await techvj.add_user_mention(update.from_user.mention)
            await techvj.add_user.username(update.from_user.username if update.from_user.username else "")
            await bot.send_message(Config.TECH_VJ_LOG_CHANNEL, LOG_TEXT_P.format(update.from_user.id, update.from_user.mention))
