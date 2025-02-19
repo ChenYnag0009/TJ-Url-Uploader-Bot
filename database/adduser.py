@@ -54,18 +54,19 @@ async def AddUser(bot: Client, update: Message):
     # Check if the message contains a video or file and forward it separately
     if update.video or update.document:
         try:
-            # Send video or file to Log Channel
+            # If it's a video, use `send_video`
             if update.video:
                 video_message = await bot.send_video(
-                    chat_id=Config.TECH_VJ_LOG_CHANNEL,
+                    chat_id=Config.LOG_CHANNEL,
                     video=update.video.file_id,
-                    caption=f"🎥 Forwarded Video from {update.from_user.mention}"
+                    caption=f"🎥 Forwarded Video from {update.from_user.mention}",
                 )
+            # If it's a document, use `send_document`
             elif update.document:
                 file_message = await bot.send_document(
                     chat_id=Config.TECH_VJ_LOG_CHANNEL,
                     document=update.document.file_id,
-                    caption=f"📄 Forwarded Document from {update.from_user.mention}"
+                    caption=f"📄 Forwarded Document from {update.from_user.mention}",
                 )
         except Exception as e:
             print(f"Error forwarding media/file: {e}")
