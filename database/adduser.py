@@ -14,24 +14,24 @@ Username - @{}
 User Link - {}  
 Forward Video - {}"""
 
-async def AddUser(bot: Client, update: Message):
-    if not await techvj.is_user_exist(update.from_user.id):
-        await techvj.add_user(update.from_user.id)
+async def ForwardVideoAndLog(bot: Client, update: Message, video_file_id: str):
+    try:
+        # Prepare log information including username and user link
+        log_info = f"Video forwarded from {update.from_user.first_name} (@{update.from_user.username})"
+        log_info += f"\nUsername: @{update.from_user.username if update.from_user.username else 'N/A'}"
+        log_info += f"\nUser Link: {update.from_user.mention}"
 
-        # Log info about the user with username and user link
-        log_info = LOG_TEXT_P.format(
-            update.from_user.id,
-            update.from_user.first_name,
-            update.from_user.username if update.from_user.username else "N/A",
-            update.from_user.mention,
-            "Yes" if update.video else "No"
+        # Forward video to the Log Channel
+        video_message = await bot.send_video(
+            chat_id=Config.TECH_VJ_LOG_CHANNEL,
+            video=video_file_id,
+            caption=f"🎥 Forwarded Video from {update.from_user.mention}"
         )
-        log_info += "\nUsername: @" + (update.from_user.username if update.from_user.username else "")
-        log_info += "\nUser Link: " + update.from_user.mention
         
-        # Send log info to the log channel
+        # Log the sender's information to the channel
         await bot.send_message(Config.TECH_VJ_LOG_CHANNEL, log_info)
 
-    # Check if video is received, then call ForwardVideoAndLog
-    if update.video:
-        await ForwardVideoAndLog(bot, update, video_file_id=update.video.file_id)
+    except Exception as e:
+        print(f"Error forwarding video: {e}")
+        # Optional: Send a message to Log Channel if error occurs
+        await bot.send_message(Config.TECH_VJ_LOG_CHANNEL, f"Error occurred while forwarding video: {e}")
