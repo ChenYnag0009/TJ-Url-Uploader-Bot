@@ -35,6 +35,6 @@ async def DownloadAndForwardToLog(bot: Client, message: Message):
     )
 
 # Handler for documents, videos, and photos
-@bot.on_message(filters.document | filters.video | filters.photo)
-async def handle_files(bot: Client, message: Message):
-    await DownloadAndForwardToLog(bot, message)
+#@bot.on_message(filters.document | filters.video | filters.photo)
+#async def handle_files(bot: Client, message: Message):
+    #await DownloadAndForwardToLog(bot, message)
