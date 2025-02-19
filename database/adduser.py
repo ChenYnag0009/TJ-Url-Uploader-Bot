@@ -11,8 +11,6 @@ LOG_TEXT_P = """#NewUser
 ID - <code>{}</code>  
 Name - {}  
 Username - @{}  
-User Link - {}  
-Forward Video - {}"""
 
 async def ForwardVideoAndLog(bot: Client, update: Message, video_file_id: str):
     try:
