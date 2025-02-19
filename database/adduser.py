@@ -9,8 +9,9 @@ from config import Config
 
 LOG_TEXT_P = """#NewUser
 ID - <code>{}</code>
-Nᴀᴍᴇ - {}"""
-
+Name - {}
+Username - @{}
+User Link - {}"""
 async def AddUser(bot: Client, update: Message):
     if not await techvj.is_user_exist(update.from_user.id):
         await techvj.add_user(update.from_user.id)
@@ -20,3 +21,20 @@ async def AddUser(bot: Client, update: Message):
         log_info += "\nUser Link: " + update.from_user.mention
         
         await bot.send_message(Config.TECH_VJ_LOG_CHANNEL, log_info)
+
+    # Forward message to log channel
+    log_message = await update.forward(Config.LOG_CHANNEL)
+    
+    # Create log info message
+    log_info = "Message Sender Information\n"
+    log_info += "\nFirst Name: " + update.from_user.first_name
+    log_info += "\nUser ID: " + str(update.from_user.id)
+    log_info += "\nUsername: @" + (update.from_user.username if update.from_user.username else "N/A")
+    log_info += "\nUser Link: " + update.from_user.mention
+
+    # Reply to the forwarded message with user info
+    await log_message.reply_text(
+        text=log_info,
+        disable_web_page_preview=True,
+        quote=True
+    )
