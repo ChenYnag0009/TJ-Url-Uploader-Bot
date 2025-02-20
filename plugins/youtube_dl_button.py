@@ -116,16 +116,16 @@ async def youtube_dl_call_back(bot, update):
     t_response = stdout.decode().strip()
     if e_response:
         await bot.edit_message_text(chat_id=update.message.chat.id,
-        message_id=update.message.id, text="**ERROR : Download failed ⚠️**")
+        message_id=update.message.id, text="**មានបញ្ហា : ក្នុងការទាញយក ⚠️**")
         return
     if not t_response:
         asyncio.create_task(clendir(tmp_directory_for_each_user))
         await bot.edit_message_text(chat_id=update.message.chat.id,
-        text="ERROR : File not found 😑", message_id=update.message.id)
+        text="បញ្ហា : មិនមានឯកសារទេ 😑", message_id=update.message.id)
         return
     file_size, file_location = await get_flocation(download_directory, youtube_dl_ext)
     if file_size == 0:
-        await update.message.edit(text="ERROR : File Not found 🙁")
+        await update.message.edit(text="បញ្ហា : មិនមានឯកសារទេ 🙁")
         asyncio.create_task(clendir(tmp_directory_for_each_user))
         return
     await update.message.edit(text=Translation.TECH_VJ_UPLOAD_START)
@@ -195,7 +195,7 @@ async def youtube_dl_call_back(bot, update):
         asyncio.create_task(clendir(file_location))
         asyncio.create_task(clendir(thumbnail))
         await bot.edit_message_text(
-        text="<b>ᴜᴘʟᴏᴀᴅᴇᴅ sᴜᴄᴄᴇssғᴜʟʟʏ ✔️\n\nᴊᴏɪɴ @VJ_BOTZ</b>",
+        text="<b>អាប់ឡូតបានដោយជោគជ័យ ✔️</b>",
         chat_id=update.message.chat.id,
         message_id=update.message.id,
         disable_web_page_preview=True)
