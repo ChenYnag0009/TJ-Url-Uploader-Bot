@@ -60,7 +60,7 @@ async def handle_force_sub(bot: Client, update: Message):
             )
         )
         return 400
-   except Exception:
+    except Exception:
         await bot.send_message(
             chat_id=update.from_user.id,
             text="Something went Wrong. Contact my [Support Group](https://t.me/+e5XPBlZ9uWw2YjI1).",
