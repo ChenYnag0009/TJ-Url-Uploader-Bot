@@ -95,8 +95,8 @@ class Translation(object):
     
     TECH_VJ_FORMAT_SELECTION = "<b>ꜱᴇʟᴇᴄᴛ ᴛʜᴇ ᴅᴇꜱɪʀᴇᴅ ғᴏʀᴍᴀᴛ: ғɪʟᴇ ꜱɪᴢᴇ ᴍɪɢʜᴛ ʙᴇ ᴀᴘᴘʀᴏxɪᴍᴀᴛᴇ \nɪғ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ꜱᴇᴛ ᴄᴜꜱᴛᴏᴍ ᴛʜᴜᴍʙɴᴀɪʟ, ꜱᴇɴᴅ ᴘʜᴏᴛᴏ ʙᴇғᴏʀᴇ ᴏʀ ǫᴜɪᴄᴋʟʏ ᴀғᴛᴇʀ ᴛᴀᴘᴘɪɴɢ ᴏɴ ᴀɴʏ ᴏғ ᴛʜᴇ ʙᴇʟᴏᴡ ʙᴜᴛᴛᴏɴꜱ.\nʏᴏᴜ ᴄᴀɴ ᴜꜱᴇ /delthumbnail ᴛᴏ ᴅᴇʟᴇᴛᴇ ᴛʜᴇ ᴀᴜᴛᴏ-ɢᴇɴᴇʀᴀᴛᴇᴅ ᴛʜᴜᴍʙɴᴀɪʟ.</b>"
     TECH_VJ_SET_CUSTOM_USERNAME_PASSWORD = """<b>Iғ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ᴅᴏᴡɴʟᴏᴀᴅ ᴘʀᴇᴍɪᴜᴍ ᴠɪᴅᴇᴏꜱ, ᴘʀᴏᴠɪᴅᴇ ɪɴ ᴛʜᴇ ғᴏʟʟᴏᴡɪɴɢ ғᴏʀᴍᴀᴛ:\nURL | ғɪʟᴇɴᴀᴍᴇ | ᴜꜱᴇʀɴᴀᴍᴇ | ᴘᴀꜱꜱᴡᴏʀᴅ</b>"""
-    TECH_VJ_DOWNLOAD_START = "<b>📥 ᴅᴏᴡɴʟᴏᴀᴅɪɴɢ...</b>"
-    TECH_VJ_UPLOAD_START = "<b>📤 ᴜᴘʟᴏᴀᴅɪɴɢ...</b>"
+    TECH_VJ_DOWNLOAD_START = "<b>📥 Downloading...\n\nFile Name: {}</b>"
+    TECH_VJ_UPLOAD_START = "<b>📤 ᴜᴘʟᴏᴀᴅɪɴɢ...\n\nFile Name: {}</b>"
     TECH_VJ_RCHD_TG_API_LIMIT = "<b>ᴅᴏᴡɴʟᴏᴀᴅᴇᴅ ɪɴ {} ꜱᴇᴄᴏɴᴅꜱ.\nᴅᴇᴛᴇᴄᴛᴇᴅ ғɪʟᴇ ꜱɪᴢᴇ: {}\nꜱᴏʀʀʏ. ʙᴜᴛ, ɪ ᴄᴀɴɴᴏᴛ ᴜᴘʟᴏᴀᴅ ғɪʟᴇꜱ ɢʀᴇᴀᴛᴇʀ ᴛʜᴀɴ 𝟸GB ᴅᴜᴇ ᴛᴏ ᴛᴇʟᴇɢʀᴀᴍ API ʟɪᴍɪᴛᴀᴛɪᴏɴꜱ.</b>"
     TECH_VJ_AFTER_SUCCESSFUL_UPLOAD_MSG = "<b>ᴛʜᴀɴᴋꜱ ғᴏʀ ᴜꜱɪɴɢ ᴍᴇ\n\n : @phu_kdet</b>"
     TECH_VJ_AFTER_SUCCESSFUL_UPLOAD_MSG_WITH_TS = "<b>ᴅᴏᴡɴʟᴏᴀᴅᴇᴅ ɪɴ {} ꜱᴇᴄᴏɴᴅꜱ.\nUᴘʟᴏᴀᴅᴇᴅ ɪɴ {} ꜱᴇᴄᴏɴᴅꜱ.\n\n@phu_kdt</b>"
